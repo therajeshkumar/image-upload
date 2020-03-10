@@ -1,0 +1,28 @@
+{
+  "name": "image-upload",
+  "version": "1.0.0",
+  "description": "image upload app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "image-upload"
+  },
+  "author": "rajesh",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "hbs": "^4.1.0",
+    "mongodb": "^3.5.4",
+    "mongoose": "^5.9.2",
+    "multer": "^1.4.2"
+  },
+  "engines": {
+    "node": "10.18.0"
+  }
+}
