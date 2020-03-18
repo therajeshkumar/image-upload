@@ -24,29 +24,29 @@ const upload = multer ({ storage : storage });
 
 // customers api
 
-router.get('/', async (req, res) => {
-  const customer = await Customer.find({})
+// router.get('/', async (req, res) => {
+//   const customer = await Customer.find({})
 
-  if (!customer) return res.status(404).send('The customer with the given ID was not found.');
+//   if (!customer) return res.status(404).send('The customer with the given ID was not found.');
 
-  res.send(customer);
-});
+//   res.send(customer);
+// });
 
-router.get('/:id', async (req, res) => {
-  const customer = await Customer.findById(req.params.id);
+// router.get('/:id', async (req, res) => {
+//   const customer = await Customer.findById(req.params.id);
 
-  if (!customer) return res.status(404).send('The customer with the given ID was not found.');
+//   if (!customer) return res.status(404).send('The customer with the given ID was not found.');
 
-  res.send(customer);
-});
+//   res.send(customer);
+// });
 
-router.delete('/:id', async (req, res) => {
-  const customer = await Customer.findByIdAndRemove(req.params.id);
+// router.delete('/:id', async (req, res) => {
+//   const customer = await Customer.findByIdAndRemove(req.params.id);
 
-  if (!customer) return res.status(404).send('Id was not found.');
+//   if (!customer) return res.status(404).send('Id was not found.');
 
-  res.send(customer);
-});
+//   res.send(customer);
+// });
 
 // router.post('/', upload.single('photo'), async (req, res) => {
 
@@ -63,7 +63,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/images-list',  async (req, res) => {
   const customers = await Customer.find({});
   sess = req.session;
-  res.render('index' , {  customer : customers   });
+  res.render('index' , {customer : customers});
 });
 
 
@@ -74,18 +74,11 @@ router.post('/', upload.single('photo'), async (req, res) => {
     photo:req.file.filename
   });
   customer = await customer.save();
-res.redirect('/services')
+res.redirect('/images-list')
 
 });
 
 
-// router.delete('/delete', async (req, res) => {
-//   const customer = await Customer.deleteMany(customers);
-
-//   if (!customer) return res.status(404).send(' customer not found.');
-
-//   res.send(customer);
-// });
 
 
 

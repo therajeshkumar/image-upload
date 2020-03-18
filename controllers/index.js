@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async(req, res) =>{
-  // res.render('index', { title: 'Home' });
   const customers = await Customer.find({});
    sess = req.session;
   res.render('index' , {
+    title: 'Home',
     email: sess.email, 
     customer : customers
     });
@@ -26,7 +26,6 @@ router.get('/', async(req, res) =>{
  sess = req.session;
     res.render('about' , {
       email: sess.email, 
-      name : sess.name
       });
     
   });
@@ -44,13 +43,11 @@ router.get('/', async(req, res) =>{
   });
 
   router.get('/services', async(req, res) =>{
-    const customers = await Customer.find({});
     sess = req.session;
     if(sess.email) {
   
     res.render('services' , {
       email: sess.email, 
-      customer : customers 
       });
     } else
     {
