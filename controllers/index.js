@@ -2,12 +2,13 @@ const {Customer} = require('../models/customer');
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/', async(req, res) =>{
   // res.render('index', { title: 'Home' });
+  const customers = await Customer.find({});
    sess = req.session;
   res.render('index' , {
-    email: sess.email,  
-    title: 'Home Page'
+    email: sess.email, 
+    customer : customers
     });
   
 });
@@ -19,46 +20,48 @@ router.get('/', function(req, res, next) {
     res.render('index' , {email: sess.email, customer : customers   });
   });
   
-  
 
-  router.get('/about-us', function(req, res, next) {
+  router.get('/about-us', async(req, res) =>{
     //  res.render('about', { title: 'About' });
  sess = req.session;
     res.render('about' , {
-      email: sess.email,
-      title: 'about Page'
+      email: sess.email, 
+      name : sess.name
       });
     
   });
    
-  router.get('/login', function(req, res, next) {
+  router.get('/login', async(req, res) =>{
     res.render('login', { title: 'Login' });
   
   });
-
-  router.get('/signup', function(req, res, next) {
+  router.get('/forget', async(req, res) =>{
+    res.render('forget', { title: 'forget' });
+  
+  });
+  router.get('/signup', async(req, res) =>{
     res.render('signup', { title: 'signup' });
   });
 
-  router.get('/services', function(req, res, next){
+  router.get('/services', async(req, res) =>{
+    const customers = await Customer.find({});
     sess = req.session;
     if(sess.email) {
   
     res.render('services' , {
-      email: sess.email,
-      title: 'Services Page'
+      email: sess.email, 
+      customer : customers 
       });
     } else
     {
-      res.write(' <h1>Access Denied ...</h1>  ');
-     // next();
-      //res.redirect('/login')
+     
+      res.redirect('/login')
 
     }
 
   });
 
-  router.get('/logout',function(req,res){
+  router.get('/logout',async(req, res) =>{
     req.session.destroy(function(err) {
       if(err) {
         console.log(err);

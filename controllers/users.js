@@ -45,20 +45,25 @@ router.post('/login',function(req,res){
   })
 });
 
+
+
+
+
+
 router.get('/',  async (req, res) => {
   const users = await User.find().select('email password')
   res.send(users);
 });
 
-router.get('/forget/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
 
- const user = await User.findById(req.params.id)
-  
-
-  if (!user) return res.status(404).send('The user not found.');
-
-  res.send(user);
-});
-
+  const user = await User.findById(req.params.id)
+   
+ 
+   if (!user) return res.status(404).send('The user not found.');
+ 
+   res.send(user);
+ });
+ 
 
 module.exports = router;

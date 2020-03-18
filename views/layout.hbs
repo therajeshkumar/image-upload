@@ -1,7 +1,7 @@
  
 <!DOCTYPE html>
-{{!-- <html oncontextmenu="return false;"> --}}
-<html>
+<html oncontextmenu="return false;">
+{{!-- <html> --}}
 
 <head>
   <meta charset="utf-8">
@@ -46,12 +46,13 @@
     <a href="/login" class="nav-link"> Login</a>
   </li>
   {{/if}}
+
   </ul>
  
 
   </div>
    {{#if email}}
-  <p style="float: right; color:aqua"> Hi : {{email}}</p>
+  <span style="float: right; color:aqua"> Hi : {{email}}</span>
     {{/if}}
 </nav>
 

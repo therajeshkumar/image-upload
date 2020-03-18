@@ -10,6 +10,7 @@ const app = express();
 var indexRouter = require('./controllers/index');
 var usersRouter = require('./controllers/users');
 var customersRouter = require('./controllers/customers');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -25,6 +26,7 @@ app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/customers', customersRouter);
+
 
 // mongodb and mongoose connection
 mongoose.connect(config.db, { useNewUrlParser: true ,useUnifiedTopology: true})
