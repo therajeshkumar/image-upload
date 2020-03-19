@@ -60,6 +60,14 @@ const upload = multer ({ storage : storage });
 // });
 
 // render page
+
+
+router.get('/',  async (req, res) => {
+  const customers = await Customer.find({})
+  sess = req.session;
+  res.render('index' , {  customer : customers   });
+});
+
 router.get('/images-list',  async (req, res) => {
   const customers = await Customer.find({});
   sess = req.session;

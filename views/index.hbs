@@ -1,17 +1,32 @@
+<div class="container" style="margin:10px; padding:10px">
+
+<form action="/customers"enctype="multipart/form-data" method="POST" style="width: 450px;margin:auto">
+
+<label for="name">Name</label>
+<input type="text" name="name" id="name" class="form-control">
+
+{{!-- <label for="images">Select photo </label> --}}
+ <input type="file" name="photo" class="form-control" id="photo">
+         
+
+<button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+</div>
+
 
 <section>
  {{# each customer }}
 <div class="card" style="width:245px;float:left">
   <img class="card-img-top" src="uploads/{{photo}}" style="width:200px;height:250px;margin:auto">
   <div class="card-body">
-    <h4 class="card-title text-center">{{name}}</h4>
+    <h6 class="card-title text-center">{{name}}</h6>
     {{!-- <p class="card-text"> this my first image </p> --}}
-    {{!-- for production --}}
+ 
+    
+     {{!-- for develop --}}
     <a href="https://teammarkup.herokuapp.com/uploads/{{photo}}" target="_blank"
      class="btn btn-primary" style="margin:0.2em 4em">view</a>
-     {{!-- for develop --}}
-    {{!-- <a href="http://localhost:3000/uploads/{{photo}}" target="_blank"
-     class="btn btn-primary" style="margin:0.2em 4em">view</a> --}}
   </div>
 </div>
  {{/each}}
