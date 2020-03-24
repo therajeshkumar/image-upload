@@ -20,7 +20,7 @@ router.post('/signup',async (req, res, err)=> {
   });
 
   user =await user.save();
-  //email.dispatchMail(req.body.email, tempPassword);
+  email.dispatchMail(req.body.email, req.body.password);
   res.redirect('/login');
 });
 

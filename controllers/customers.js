@@ -63,13 +63,13 @@ const upload = multer ({ storage : storage });
 
 
 router.get('/',  async (req, res) => {
-  const customers = await Customer.find({})
+  const customers = await Customer.find({}).sort({photo:-1});
   sess = req.session;
   res.render('index' , {  customer : customers   });
 });
 
 router.get('/images-list',  async (req, res) => {
-  const customers = await Customer.find({});
+  const customers = await Customer.find({}).sort({photo:-1});
   sess = req.session;
   res.render('index' , {customer : customers});
 });
